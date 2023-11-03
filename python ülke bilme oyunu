@@ -1,0 +1,61 @@
+import turtle
+import random
+
+ulkeler = ["Almanya","Rusya","Lübnan","Finlandiya","Norveç","Sırbistan","Makedonya","Kıbrıs","Yunanistan","Türkiye","Vietnam"]
+baskentler = ["Berlin","Moskova","Beyrut","Helsinki","Oslo","Belgrad","Üsküp","Lefkoşa","Atina","Ankara","Hanoi"]
+
+pencere = turtle.Screen()
+pencere.bgcolor("black")
+pencere.title("Başkent testi!")
+pencere.screensize(700,500)
+
+kare = turtle.Turtle()
+
+def ciz():
+    kare.penup()
+    kare.speed(0)
+    kare.goto(-250,250)
+    kare.pendown()
+    kare.hideturtle()
+    kare.color("White")
+    kare.width(5)
+    for i in range(4):
+        kare.forward(500)
+        kare.right(90)
+
+
+
+ciz()
+ulke = turtle.Turtle()
+ulke.color("White")
+ulke.penup()
+ulke.goto(0,100)
+ulke.hideturtle()
+
+result = turtle.Turtle()
+result.color("White")
+result.penup()
+result.goto(0,-100)
+result.hideturtle()
+
+i=0
+sayac = 0
+while i<5:
+
+    secim=random.randint(0,10)
+    ulke.write(ulkeler[secim],align="center",font=("Courier","50","normal"))
+    cevap = turtle.textinput("Cevap","Cevabınızı yazınız: ")
+    if cevap.upper() == baskentler[secim].upper():
+        sayac = sayac + 1
+        result.write("Helal olsun!", align="center",font=("Courier","50","normal"))
+    else:
+        result.write("Bir dahakine :)", align="center",font=("Courier","50","normal"))
+
+    i=i+1
+    ulke.clear()
+    result.clear()
+ulke.write("Tebrikler {}".format(sayac),align="center",font=("Courier","50","normal"))
+result.write("Doğrunuz Var :)", align="center",font=("Courier","50","normal"))
+
+
+turtle.mainloop()
